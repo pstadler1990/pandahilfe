@@ -17,7 +17,6 @@ export default {
   @import "src/assets/global"
 
   #app
-    padding: 1em
     font-size: 120%
 
 </style>
