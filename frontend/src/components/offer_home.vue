@@ -11,10 +11,16 @@
                 </div>
 
                 <div class="pure-u1 pure-u-md-1-2">
+
                     <label for="offer-location">Ort</label>
-                    <input type="text" id="offer-location" placeholder="z.B. Regensburg" class="pure-input-1"/>
+                    <select id="offer-location" v-model="offerQuery.location" class="pure-input-1">
+                        <option v-for="location in supportedLocations" v-bind:value="location" :key="location">
+                            {{location}}
+                        </option>
+                    </select>
+
                     <label for="offer-distance" class="pure-form-message-inline offer-distance">Im Umkreis von
-                        <input type="number" id="offer-distance" v-model="offerQuery.distance"  /> km</label>
+                    <input type="number" id="offer-distance" v-model="offerQuery.distance"  /> km</label>
                 </div>
             </fieldset>
 
@@ -32,9 +38,11 @@
             return {
                 offerQuery: {
                     tags: [],
+                    location: config.search.locations[0],
                     distance: 10
                 },
-                searchOptions: config.search.tags
+                searchOptions: config.search.tags,
+                supportedLocations: config.search.locations
             }
         }
     }

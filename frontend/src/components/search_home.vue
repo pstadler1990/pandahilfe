@@ -14,7 +14,11 @@
 
                 <div class="pure-u1 pure-u-md-1-2">
                     <label for="search-location">Ort</label>
-                    <input type="text" id="search-location" placeholder="z.B. Regensburg" class="pure-input-1"/>
+                    <select id="search-location" v-model="searchLocation" class="pure-input-1">
+                        <option v-for="location in supportedLocations" v-bind:value="location" :key="location">
+                            {{location}}
+                        </option>
+                    </select>
                 </div>
             </fieldset>
 
@@ -31,7 +35,9 @@
         data () {
             return {
                 searchQuery: config.search.tags[0],
-                searchOptions: config.search.tags
+                searchLocation: config.search.locations[0],
+                searchOptions: config.search.tags,
+                supportedLocations: config.search.locations
             }
         }
     }
