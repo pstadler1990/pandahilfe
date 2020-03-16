@@ -13,7 +13,11 @@ export default {
 
 <style lang="sass">
   @import "~purecss-sass"
+  @import "src/assets/colors"
+  @import "src/assets/global"
 
   #app
     padding: 1em
+    font-size: 120%
+
 </style>
