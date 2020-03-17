@@ -1,86 +1,89 @@
 <template>
     <div class="offer-home">
 
-        <div id="offer-complete-overlay" class="full-overlay" v-if="offerCompleteStatus">
+        <div id="offer-complete-overlay" v-if="offerCompleteStatus">
             <div class="offer-complete-status" v-if="offerCompleteSuccess">
                 <h3>Vielen Dank! Ihre Hilfeunterstützung wurde erfolgreich eingetragen.</h3>
                 <h4>Anzeigennummer: {{entryID}}</h4>
                 <h5>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h5>
                 <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Suchen Sie einfach nach Ihrer Anzeige und wählen Sie <em>Anzeige löschen</em>.</p>
-                <button class="pure-button" @click="resetForm">Weitere Hilfe anbieten</button>
             </div>
             <div class="offer-complete-error" v-else>
                 <h3>Hoppla! Leider konnten wir Ihren Eintrag nicht speichern..</h3>
                 <p>Bitte versuchen Sie es in wenigen Minuten noch einmal, dann sollte es wieder klappen.</p>
             </div>
+
+            <button class="pure-button" @click="resetForm">Zurück zum Formular</button>
         </div>
 
-        <h2>Hilfe <strong>anbieten</strong></h2>
-        <form class="pure-form pure-form-aligned">
-            <fieldset>
-                <div class="pure-u1 pure-u-md-1-2">
-                    <div v-for="option in searchOptions" v-bind:value="option" :key="option" class="offer-option">
-                        <label :for="option"><input type="checkbox" :value="option" :id="option" v-model="offerQuery.tags" />&nbsp;{{option}}</label>
+        <div v-else>
+            <h2>Hilfe <strong>anbieten</strong></h2>
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-u1 pure-u-md-1-2">
+                        <div v-for="option in searchOptions" v-bind:value="option" :key="option" class="offer-option">
+                            <label :for="option"><input type="checkbox" :value="option" :id="option" v-model="offerQuery.tags" />&nbsp;{{option}}</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="pure-u1 pure-u-md-1-2">
-                    <label for="offer-location">Ort</label>
-                    <select id="offer-location" v-model="offerQuery.location" class="pure-input-1">
-                        <option v-for="location in supportedLocations" v-bind:value="location" :key="location">
-                            {{location}}
-                        </option>
-                    </select>
-                    <label for="offer-distance" class="pure-form-message-inline offer-distance">Im Umkreis von
-                    <input type="number" id="offer-distance" v-model="offerQuery.distance"  /> km</label>
-                </div>
-            </fieldset>
+                    <div class="pure-u1 pure-u-md-1-2">
+                        <label for="offer-location">Ort</label>
+                        <select id="offer-location" v-model="offerQuery.location" class="pure-input-1">
+                            <option v-for="location in supportedLocations" v-bind:value="location" :key="location">
+                                {{location}}
+                            </option>
+                        </select>
+                        <span class="pure-form-message">Wenn Sie <em>Regensburg</em> als Ort auswählen, werden alle Stadtteile automatisch
+                        mit eingeschlossen.</span>
+                    </div>
+                </fieldset>
 
-            <fieldset v-if="formOpened">
-                <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="contact-name">Name
-                        <input type="text" v-model="offerQuery.contactName" id="contact-name" class="pure-input-1" />
-                    </label>
-                </div>
+                <fieldset v-if="formOpened">
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="contact-name">Name
+                            <input type="text" v-model="offerQuery.contactName" id="contact-name" class="pure-input-1" />
+                        </label>
+                    </div>
 
-                <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="contact-email">E-Mail
-                        <input type="email" v-model="offerQuery.contactEmail" id="contact-email" class="pure-input-1" required/>
-                        <span class="pure-form-message required-info">Pflichtfeld</span>
-                    </label>
-                </div>
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="contact-email">E-Mail
+                            <input type="email" v-model="offerQuery.contactEmail" id="contact-email" class="pure-input-1" required/>
+                            <span class="pure-form-message required-info">Pflichtfeld</span>
+                        </label>
+                    </div>
 
-                <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="contact-phone">Telefonnummer
-                        <input type="tel" v-model="offerQuery.contactPhone" id="contact-phone" class="pure-input-1" />
-                    </label>
-                    <span class="pure-form-message">Die Angabe der Telefonnummer ist freiwillig. Lesen Sie hier mehr darüber.</span>
-                </div>
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="contact-phone">Telefonnummer
+                            <input type="tel" v-model="offerQuery.contactPhone" id="contact-phone" class="pure-input-1" />
+                        </label>
+                        <span class="pure-form-message">Die Angabe der Telefonnummer ist freiwillig. Lesen Sie hier mehr darüber.</span>
+                    </div>
 
-                <p>
-                    <label><input type="checkbox" v-model="offerQuery.contactAnonymously" id="contact-anonymously" />&nbsp;
-                        Ich möchte anonym bleiben (Sie erhalten eine E-Mail von uns, wenn ein*e Hilfesuchende*r Sie kontaktieren möchte)
-                    </label>
-                </p>
+                    <p>
+                        <label><input type="checkbox" v-model="offerQuery.contactAnonymously" id="contact-anonymously" />&nbsp;
+                            Ich möchte anonym bleiben (Sie erhalten eine E-Mail von uns, wenn ein*e Hilfesuchende*r Sie kontaktieren möchte)
+                        </label>
+                    </p>
 
-                <div class="pure-u-1">
-                    <label for="contact-notes">Anmerkungen
-                        <textarea v-model="offerQuery.contactNotes" id="contact-notes" class="pure-input-1"/>
-                    </label>
-                    <span class="pure-form-message">Optional</span>
-                </div>
+                    <div class="pure-u-1">
+                        <label for="contact-notes">Anmerkungen
+                            <textarea v-model="offerQuery.contactNotes" id="contact-notes" class="pure-input-1"/>
+                        </label>
+                        <span class="pure-form-message">Optional</span>
+                    </div>
 
-            </fieldset>
+                </fieldset>
 
-            <button class="pure-button button-secondary" @click="extendForm">Hilfe anbieten</button>
+                <button class="pure-button button-secondary" @click="extendForm">Hilfe anbieten</button>
 
-            <!-- Error messages -->
-            <ul v-if="formErrors.length">
-                <li v-for="error in formErrors" :key="error" class="error-info">
-                    {{error}}
-                </li>
-            </ul>
-        </form>
+                <!-- Error messages -->
+                <ul v-if="formErrors.length">
+                    <li v-for="error in formErrors" :key="error" class="error-info">
+                        {{error}}
+                    </li>
+                </ul>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -94,7 +97,6 @@
                 offerQuery: {
                     tags: [],
                     location: config.search.locations[0],
-                    distance: 10,
                     contactName: '',
                     contactPhone: '',
                     contactEmail: '',
@@ -143,7 +145,6 @@
                             tags: this.offerQuery.tags,
                             notes: this.offerQuery.contactNotes,
                             location: this.offerQuery.location,
-                            distance: this.offerQuery.distance,
                             isAnonymously: this.offerQuery.contactAnonymously
                         }).then(res => {
                            const response = res.data;
@@ -180,7 +181,6 @@
                 this.offerQuery = {
                     tags: [],
                     location: config.search.locations[0],
-                    distance: 10,
                     contactName: '',
                     contactPhone: '',
                     contactEmail: '',
@@ -201,9 +201,6 @@
     .offer-option
         padding: .1em
 
-    .offer-distance
-        padding: .25em
-
     h2
         strong
             font-weight: bold
@@ -219,15 +216,6 @@
     .button-secondary
         background: $color-theme-main
         color: white
-        font-size: 120%
-
-    .full-overlay
-        position: absolute
-        width: calc(100% - 2em)
-        height: calc(100% - 2em)
-        margin: -1em
-        padding: 1em
-        background: white
 
     .offer-complete-error
         background: #CB4B4B
