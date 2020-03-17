@@ -136,7 +136,6 @@
                     };
 
                     if(hasOptions && hasLocation && hasValidEmail(this.offerQuery.contactEmail)) {
-                        // TODO: Submit offer form
                         this.$http.post(
                             `${config.search.apiUrl}/entry`, {
                             name: this.offerQuery.contactName,

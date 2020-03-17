@@ -6,7 +6,7 @@
             <div v-if="!contactCompleteStatus">
                 <h3>Kontaktaufnahme für Anzeige #{{searchContactEntryId}} - {{searchQuery}} in {{searchLocation}}</h3>
                 <form class="pure-form pure-form-aligned">
-                    <fielset>
+                    <fieldset>
                         <div class="pure-u-1 pure-u-md-1-3">
                             <label>Ihr Name
                                 <input type="text" class="pure-input-1" v-model="searchContactName"/>
@@ -26,7 +26,7 @@
                         </div>
 
                         <button class="pure-button pure-button-primary" @click="sendForm">Kontaktanfrage stellen</button>
-                    </fielset>
+                    </fieldset>
                 </form>
             </div>
             <div v-else>
@@ -199,7 +199,6 @@
                     this.contactCompleteSuccess = true;
                 }).catch(() => {
                     this.contactCompleteSuccess = false;
-                    // TODO: Push errors
                 }).finally(() => {
                     this.contactCompleteStatus = true;
                 });
