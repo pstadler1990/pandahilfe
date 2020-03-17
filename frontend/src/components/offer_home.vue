@@ -11,6 +11,10 @@
                 <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Suchen Sie einfach nach Ihrer Anzeige und wählen Sie <em>Anzeige löschen</em>.</p>
                 <button class="pure-button" @click="resetForm">Weitere Hilfe anbieten</button>
             </div>
+            <div class="offer-complete-error" v-else>
+                <h3>Hoppla! Leider konnten wir Ihren Eintrag nicht speichern..</h3>
+                <p>Bitte versuchen Sie es in wenigen Minuten noch einmal, dann sollte es wieder klappen.</p>
+            </div>
         </div>
 
         <h2>Hilfe <strong>anbieten</strong></h2>
@@ -222,5 +226,10 @@
         margin: -1em
         padding: 1em
         background: white
+
+    .offer-complete-error
+        background: #CB4B4B
+        padding: 1em
+        color: white
 
 </style>
