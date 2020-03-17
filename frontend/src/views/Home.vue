@@ -6,16 +6,22 @@
         <div class="pure-u-1">
             <OfferHome />
         </div>
+
+        <div class="pure-u-1">
+            <DeleteHome />
+        </div>
     </div>
 </template>
 
 <script>
     import SearchHome from '../components/search_home'
     import OfferHome from '../components/offer_home'
+    import DeleteHome from "../components/delete_home";
 
     export default {
         name: "Home",
         components: {
+            DeleteHome,
             SearchHome,
             OfferHome
         }
@@ -34,6 +40,9 @@
         padding: 1em
         border-radius: 2px
         margin: 1em
+
+    .delete-home
+        padding: 1em
 
     .search-home
         background: $color-theme-past1
