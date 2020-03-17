@@ -1,6 +1,5 @@
 <template>
     <div class="search-home">
-
         <div id="search-contact-overlay" v-if="searchContactForm">
 
             <div v-if="!contactCompleteStatus">
@@ -25,7 +24,7 @@
                             <span class="pure-form-message">Optional, für schnellere Kontaktaufnahme empfohlen</span>
                         </div>
 
-                        <button class="pure-button pure-button-primary" @click="sendForm">Kontaktanfrage stellen</button>
+                        <button class="pure-button pure-button-primary" @click="sendForm">Kontaktanfrage stellen</button> oder <a href='#' @click="resetForm">Zurück</a>
                     </fieldset>
                 </form>
             </div>
@@ -158,8 +157,6 @@
                 }
             },
             resetFormData: function() {
-                this.searchQuery = config.search.tags[0];
-                this.searchLocation = config.search.locations[1];
                 this.searchQueryResults = [];
                 this.showResults = false;
                 this.searchContactForm = false;
@@ -173,6 +170,8 @@
             },
             resetForm: function() {
                 this.resetFormData();
+                this.searchQuery = config.search.tags[0];
+                this.searchLocation = config.search.locations[1];
                 this.prefetchQuery();
             },
             openContactForm: function(entry_id) {
@@ -196,8 +195,7 @@
                     name: this.searchContactName,
                     email: this.searchContactEmail,
                     phone: this.searchContactPhone
-                }).then(res => {
-                    console.log(res);
+                }).then(() => {
                     this.contactCompleteSuccess = true;
                 }).catch(() => {
                     this.contactCompleteSuccess = false;
