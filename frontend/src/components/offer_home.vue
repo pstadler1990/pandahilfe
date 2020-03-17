@@ -4,10 +4,8 @@
         <div id="offer-complete-overlay" class="full-overlay" v-if="offerCompleteStatus">
             <div class="offer-complete-status" v-if="offerCompleteSuccess">
                 <h3>Vielen Dank! Ihre Hilfeunterstützung wurde erfolgreich eingetragen.</h3>
-                <p>
-                    Wenn es interessierte hilfsbedürftige Personen in Ihrem Umkreis gibt, werden diese sich vielleicht bald bei Ihnen melden.
-                </p>
-                <h4>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h4>
+                <h4>Anzeigennummer: {{entryID}}</h4>
+                <h5>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h5>
                 <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Suchen Sie einfach nach Ihrer Anzeige und wählen Sie <em>Anzeige löschen</em>.</p>
                 <button class="pure-button" @click="resetForm">Weitere Hilfe anbieten</button>
             </div>
@@ -109,7 +107,8 @@
                 formErrors: [],
                 offerCompleteStatus: false,
                 offerCompleteSuccess: false,
-                deleteCode: ''
+                deleteCode: '',
+                entryID: 0,
             }
         },
         methods: {
@@ -142,6 +141,7 @@
                             email: this.offerQuery.contactEmail,
                             phone: this.offerQuery.contactPhone,
                             tags: this.offerQuery.tags,
+                            notes: this.offerQuery.contactNotes,
                             location: this.offerQuery.location,
                             distance: this.offerQuery.distance,
                             isAnonymously: this.offerQuery.contactAnonymously
@@ -149,6 +149,7 @@
                            const response = res.data;
                            if(response.ok) {
                                this.deleteCode = response.deleteCode;
+                               this.entryID = response.entry_id;
                                this.offerCompleteSuccess = true;
                            }
                         }).catch(() => {
@@ -188,6 +189,7 @@
                 };
                 this.formErrors = [];
                 this.deleteCode = '';
+                this.entryID = 0;
             }
         }
     }

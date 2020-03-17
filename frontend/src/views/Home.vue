@@ -38,6 +38,7 @@
     .search-home
         background: $color-theme-past1
         border: 1px solid darken($color-theme-past1, 30%)
+        position: relative
 
     .offer-home
         background: lighten($color-theme-main, 40%)
