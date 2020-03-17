@@ -1,5 +1,6 @@
 export const config = Object.freeze({
     search: {
+        apiUrl: 'http://192.168.188.72:3010',
         tags: [
             'Einkaufshilfe',
             'Kinderbetreuung',

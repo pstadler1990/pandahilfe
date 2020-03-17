@@ -1,5 +1,18 @@
 <template>
     <div class="offer-home">
+
+        <div id="offer-complete-overlay" class="full-overlay" v-if="offerCompleteStatus">
+            <div class="offer-complete-status" v-if="offerCompleteSuccess">
+                <h3>Vielen Dank! Ihre Hilfeunterstützung wurde erfolgreich eingetragen.</h3>
+                <p>
+                    Wenn es interessierte hilfsbedürftige Personen in Ihrem Umkreis gibt, werden diese sich vielleicht bald bei Ihnen melden.
+                </p>
+                <h4>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h4>
+                <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Suchen Sie einfach nach Ihrer Anzeige und wählen Sie <em>Anzeige löschen</em>.</p>
+                <button class="pure-button" @click="resetForm">Weitere Hilfe anbieten</button>
+            </div>
+        </div>
+
         <h2>Hilfe <strong>anbieten</strong></h2>
         <form class="pure-form pure-form-aligned">
             <fieldset>
@@ -29,14 +42,14 @@
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="contact-name">E-Mail
+                    <label for="contact-email">E-Mail
                         <input type="email" v-model="offerQuery.contactEmail" id="contact-email" class="pure-input-1" required/>
                         <span class="pure-form-message required-info">Pflichtfeld</span>
                     </label>
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="contact-name">Telefonnummer
+                    <label for="contact-phone">Telefonnummer
                         <input type="tel" v-model="offerQuery.contactPhone" id="contact-phone" class="pure-input-1" />
                     </label>
                     <span class="pure-form-message">Die Angabe der Telefonnummer ist freiwillig. Lesen Sie hier mehr darüber.</span>
@@ -89,13 +102,18 @@
                 searchOptions: config.search.tags,
                 supportedLocations: config.search.locations,
                 formOpened: false,
-                formErrors: []
+                formErrors: [],
+                offerCompleteStatus: false,
+                offerCompleteSuccess: false,
+                deleteCode: ''
             }
         },
         methods: {
             extendForm: function(e) {
                 if(!this.formOpened) {
                     this.formOpened = true;
+                    this.offerCompleteStatus = false;
+                    this.offerCompleteSuccess = false;
                     e.preventDefault();
                     return false;
                 } else{
@@ -113,8 +131,28 @@
                     };
 
                     if(hasOptions && hasLocation && hasValidEmail(this.offerQuery.contactEmail)) {
-                        alert('alles ok');
                         // TODO: Submit offer form
+                        this.$http.post(
+                            `${config.search.apiUrl}/entry`, {
+                            name: this.offerQuery.contactName,
+                            email: this.offerQuery.contactEmail,
+                            phone: this.offerQuery.contactPhone,
+                            tags: this.offerQuery.tags,
+                            location: this.offerQuery.location,
+                            distance: this.offerQuery.distance,
+                            isAnonymously: this.offerQuery.contactAnonymously
+                        }).then(res => {
+                           const response = res.data;
+                           if(response.ok) {
+                               this.deleteCode = response.deleteCode;
+                               this.offerCompleteSuccess = true;
+                           }
+                        }).catch(() => {
+                            this.offerCompleteSuccess = false;
+                        }).finally(() => {
+                            this.formOpened = false;
+                            this.offerCompleteStatus = true;
+                        })
                     } else {
                         if(!hasOptions) {
                             this.formErrors.push('Bitte wählen Sie mindestens eine Art der Hilfe aus');
@@ -129,6 +167,23 @@
 
                 }
 
+            },
+            resetForm: function() {
+                this.formOpened = false;
+                this.offerCompleteStatus = false;
+                this.offerCompleteSuccess = false;
+                this.offerQuery = {
+                    tags: [],
+                    location: config.search.locations[0],
+                    distance: 10,
+                    contactName: '',
+                    contactPhone: '',
+                    contactEmail: '',
+                    contactAnonymously: false,
+                    contactNotes: ''
+                };
+                this.formErrors = [];
+                this.deleteCode = '';
             }
         }
     }
@@ -159,4 +214,13 @@
         background: $color-theme-main
         color: white
         font-size: 120%
+
+    .full-overlay
+        position: absolute
+        width: calc(100% - 2em)
+        height: calc(100% - 2em)
+        margin: -1em
+        padding: 1em
+        background: white
+
 </style>

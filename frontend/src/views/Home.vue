@@ -42,4 +42,5 @@
     .offer-home
         background: lighten($color-theme-main, 40%)
         border: 1px solid darken($color-theme-main, 30%)
+        position: relative
 </style>
