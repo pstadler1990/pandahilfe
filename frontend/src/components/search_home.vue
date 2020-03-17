@@ -87,6 +87,8 @@
                     <div class="pure-u-1 sep">
                         <div class="pure-u1 pure-u-md-1-2" v-if="result.name">
                             von <em>{{result.name}}</em>
+                            <span v-if="result.email">&mdash; 📧 <a :href="emailLink(result.email)">{{result.email}}</a></span>
+                            <span v-if="result.phone">&mdash; ☎ <a :href="phoneLink(result.phone)">{{result.phone}}</a></span>
                         </div>
                     </div>
 
@@ -202,6 +204,12 @@
                 }).finally(() => {
                     this.contactCompleteStatus = true;
                 });
+            },
+            emailLink: function(mail) {
+                return `mailto: ${mail}`;
+            },
+            phoneLink: function(num) {
+                return `tel: ${num}`;
             }
         },
         watch: {

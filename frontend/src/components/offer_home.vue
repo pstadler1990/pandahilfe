@@ -39,20 +39,20 @@
                 </fieldset>
 
                 <fieldset v-if="formOpened">
-                    <div class="pure-u-1 pure-u-md-1-3">
+                    <div class="pure-u-1 pure-u-md-1-2">
                         <label for="contact-name">Name
                             <input type="text" v-model="offerQuery.contactName" id="contact-name" class="pure-input-1" />
                         </label>
                     </div>
 
-                    <div class="pure-u-1 pure-u-md-1-3">
+                    <div class="pure-u-1 pure-u-md-1-2">
                         <label for="contact-email">E-Mail
                             <input type="email" v-model="offerQuery.contactEmail" id="contact-email" class="pure-input-1" required/>
                             <span class="pure-form-message required-info">Pflichtfeld</span>
                         </label>
                     </div>
 
-                    <div class="pure-u-1 pure-u-md-1-3">
+                    <div class="pure-u-1">
                         <label for="contact-phone">Telefonnummer
                             <input type="tel" v-model="offerQuery.contactPhone" id="contact-phone" class="pure-input-1" />
                         </label>
