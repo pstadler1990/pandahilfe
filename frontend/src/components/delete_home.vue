@@ -4,12 +4,12 @@
             <fieldset>
                 <h5>Aufgegebene Anzeige löschen</h5>
 
-                <div class="pure-u-1 pure-u-md-1-2">
-                    <label>Anzeigennummer<input type="number" placeholder="z.B. 105" v-model="deleteEntryId" required/></label>
+                <div class="pure-u-1 pure-u-lg-1-2">
+                    <label>Anzeigennummer<input type="number" placeholder="z.B. 105" v-model="deleteEntryId" class="pure-input-1" required/></label>
                 </div>
 
-                <div class="pure-u-1 pure-u-md-1-2">
-                    <label>Löschcode<input type="number" max="9999" v-model="deleteCode" required/></label>
+                <div class="pure-u-1 pure-u-lg-1-2">
+                    <label>Löschcode<input type="number" max="9999" v-model="deleteCode" class="pure-input-1" required/></label>
                 </div>
 
                 <div class="pure-u-1">
