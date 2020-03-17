@@ -57,7 +57,14 @@
 
             </fieldset>
 
-            <button class="pure-button" @click.prevent="extendForm">Hilfe anbieten</button>
+            <button class="pure-button button-secondary" @click="extendForm">Hilfe anbieten</button>
+
+            <!-- Error messages -->
+            <ul v-if="formErrors.length">
+                <li v-for="error in formErrors" :key="error" class="error-info">
+                    {{error}}
+                </li>
+            </ul>
         </form>
     </div>
 </template>
@@ -82,15 +89,44 @@
                 searchOptions: config.search.tags,
                 supportedLocations: config.search.locations,
                 formOpened: false,
+                formErrors: []
             }
         },
         methods: {
-            extendForm: function() {
+            extendForm: function(e) {
                 if(!this.formOpened) {
                     this.formOpened = true;
+                    e.preventDefault();
+                    return false;
                 } else{
                     /* Form already open, validate input fields and submit */
-                    // TODO: Submit offer form
+                    this.formErrors = [];
+
+                    const hasOptions = this.offerQuery.tags.length > 0;
+                    const hasLocation = this.offerQuery.location.length > 0;
+                    const hasValidEmail = (email) => {
+                        if(email.length === 0) {
+                            return false;
+                        }
+                        const re = /\S+@\S+\.\S+/;
+                        return re.test(email);
+                    };
+
+                    if(hasOptions && hasLocation && hasValidEmail(this.offerQuery.contactEmail)) {
+                        alert('alles ok');
+                        // TODO: Submit offer form
+                    } else {
+                        if(!hasOptions) {
+                            this.formErrors.push('Bitte wählen Sie mindestens eine Art der Hilfe aus');
+                        }
+                        if(!hasLocation) {
+                            this.formErrors.push('Bitte wählen Sie einen Ort aus');
+                        }
+                        if(!hasValidEmail()) {
+                            this.formErrors.push('Bitte überprüfen Sie die eingegebene E-Mail-Adresse');
+                        }
+                    }
+
                 }
 
             }
@@ -116,6 +152,11 @@
         resize: vertical
         min-height: 7em
 
-    .required-info
-        font-weight: bold
+    .error-info
+        margin-left: -2em
+
+    .button-secondary
+        background: $color-theme-main
+        color: white
+        font-size: 120%
 </style>

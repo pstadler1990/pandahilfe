@@ -1,9 +1,9 @@
 <template>
-    <div class="pure-g center-both">
-        <div class="pure-u-1 pure-u-md-1-2">
+    <div class="pure-g main-panel">
+        <div class="pure-u-1">
             <SearchHome />
         </div>
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div class="pure-u-1">
             <OfferHome />
         </div>
     </div>
@@ -24,6 +24,11 @@
 
 <style scoped lang="sass">
     @import "src/assets/colors"
+
+    @media screen and (min-width: 80em)
+        .main-panel
+            width: 50%
+            margin: 0 auto
 
     .search-home, .offer-home
         padding: 1em

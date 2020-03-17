@@ -19,4 +19,14 @@ export default {
   #app
     font-size: 120%
 
+  .required-info
+    font-weight: bold
+
+  .error-info
+    display: block
+    background: $color-error
+    padding: .25em
+    border-radius: 3px
+    border: 1px solid darken($color-error, 20%)
+
 </style>

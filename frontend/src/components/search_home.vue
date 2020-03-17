@@ -22,7 +22,7 @@
                 </div>
             </fieldset>
 
-            <button class="pure-button pure-button-primary">Hilfe finden</button>
+            <button class="pure-button pure-button-primary button-large">Hilfe finden</button>
         </form>
     </div>
 </template>
@@ -48,4 +48,7 @@
         strong
             font-weight: bold
             border-bottom: 3px solid black
+
+    .button-large
+        font-size: 150%
 </style>
