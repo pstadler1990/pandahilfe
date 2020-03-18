@@ -32,6 +32,9 @@
             DeleteHome,
             SearchHome,
             OfferHome
+        },
+        beforeMount() {
+            scroll(0,0);
         }
     }
 </script>

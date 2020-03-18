@@ -9,7 +9,7 @@
                     <h4>Fragen? Mitmachen? <a href="mailto: pstadler90@gmx.de">pstadler90@gmx.de</a></h4>
                 </div>
                 <div class="pure-u-1 pure-u-md-1-3">
-                    <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+                    <router-link to="/impressum">Impressum und Datenschutz</router-link>
                 </div>
                 <div class="pure-u-1 pure-u-md-1-3">
                     Dieses Projekt ist Open Source (<a href="https://github.com/pstadler1990/pandahilfe">Github</a>)
