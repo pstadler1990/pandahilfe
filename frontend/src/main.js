@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-//import {config} from './config'
 
 const axiosConfig = {
     timeout: 3000,
