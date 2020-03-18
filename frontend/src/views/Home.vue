@@ -1,5 +1,5 @@
 <template>
-    <div class="pure-g main-panel">
+    <div>
         <header class="pure-u-1">
             <h1>Corona-Nachbarschaftshilfe Regensburg</h1>
             <div class="header-info">
@@ -18,21 +18,6 @@
         <div class="pure-u-1 pure-u-lg-1-2">
             <DeleteHome />
         </div>
-
-        <footer class="pure-u-1">
-
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h4>Fragen? Mitmachen? <a href="mailto: pstadler90@gmx.de">pstadler90@gmx.de</a></h4>
-            </div>
-            <div class="pure-u-1 pure-u-md-1-3">
-                Mit freundlicher Hilfe von:
-            </div>
-            <div class="pure-u-1 pure-u-md-1-3">
-                Dieses Projekt ist Open Source (<a href="https://github.com/pstadler1990/pandahilfe">Github</a>)
-            </div>
-
-
-        </footer>
     </div>
 </template>
 
@@ -54,11 +39,6 @@
 <style scoped lang="sass">
     @import "src/assets/colors"
 
-    @media screen and (min-width: 80em)
-        .main-panel
-            width: 50%
-            margin: 0 auto
-
     .search-home, .offer-home, .delete-home
         padding: 1em
         border-radius: 2px
@@ -79,9 +59,10 @@
         background: rgba(255, 255, 255, .8)
 
     header
+        width: calc(100% - 2em)
         padding: 1em
+        border-radius: 2px
         h1
-            padding: .1em
             color: darken($color-theme-past2, 50%)
             text-align: center
         .header-info
@@ -89,8 +70,4 @@
             padding: 1em
             border-radius: 2px
 
-    footer
-        padding: 1em
-        font-size: 70%
-        text-align: center
 </style>

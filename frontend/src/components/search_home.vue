@@ -175,6 +175,7 @@
                 this.prefetchQuery();
             },
             openContactForm: function(entry_id) {
+                scroll(0,0);    // Scroll to top of page
                 this.resetFormData();
                 this.searchContactForm = true;
                 this.searchContactEntryId = entry_id;

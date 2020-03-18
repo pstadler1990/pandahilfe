@@ -5,8 +5,8 @@
             <div class="offer-complete-status" v-if="offerCompleteSuccess">
                 <h3>Vielen Dank! Ihre Hilfeunterstützung wurde erfolgreich eingetragen.</h3>
                 <h4>Anzeigennummer: {{entryID}}</h4>
-                <h5>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h5>
-                <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Suchen Sie einfach nach Ihrer Anzeige und wählen Sie <em>Anzeige löschen</em>.</p>
+                <h4>Wichtig - Ihr Löschcode lautet: {{deleteCode}}</h4>
+                <p>Mit diesem Löschcode können Sie Ihre Anzeige jederzeit löschen. Geben Sie einfach Ihre Anzeigennummer und den Löschcode ein und wählen Sie <em>Anzeige zur Löschung freigeben</em>.</p>
             </div>
             <div class="offer-complete-error" v-else>
                 <h3>Hoppla! Leider konnten wir Ihren Eintrag nicht speichern..</h3>
