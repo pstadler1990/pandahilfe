@@ -20,13 +20,13 @@
             <h2>Hilfe <strong>anbieten</strong></h2>
             <form class="pure-form pure-form-aligned">
                 <fieldset>
-                    <div class="pure-u1 pure-u-md-1-2">
+                    <div class="pure-u1">
                         <div v-for="option in searchOptions" v-bind:value="option" :key="option" class="offer-option">
                             <label :for="option"><input type="checkbox" :value="option" :id="option" v-model="offerQuery.tags" />&nbsp;{{option}}</label>
                         </div>
                     </div>
-
-                    <div class="pure-u1 pure-u-md-1-2">
+                    <br />
+                    <div class="pure-u1">
                         <label for="offer-location">Ort</label>
                         <select id="offer-location" v-model="offerQuery.location" class="pure-input-1">
                             <option v-for="location in supportedLocations" v-bind:value="location" :key="location">
