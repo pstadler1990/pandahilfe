@@ -6,7 +6,7 @@
 
             <footer class="pure-u-1">
                 <div class="pure-u-1 pure-u-md-1-3">
-                    <h4>Fragen? Mitmachen? <a href="mailto: pstadler90@gmx.de">pstadler90@gmx.de</a></h4>
+                    <h4>Fragen? Mitmachen? <a href="mailto: pandahilfe-rgb@gmx.de">pandahilfe-rgb@gmx.de</a></h4>
                 </div>
                 <div class="pure-u-1 pure-u-md-1-3">
                     <router-link to="/impressum">Impressum und Datenschutz</router-link>
