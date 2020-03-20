@@ -151,10 +151,12 @@
                     });
                 }
             },
-            findQuery: function() {
+            findQuery: function(e) {
                 if(this.searchQueryResults) {
                     this.showResults = true;
                 }
+                e.preventDefault();
+                return false;
             },
             resetFormData: function() {
                 this.searchQueryResults = [];

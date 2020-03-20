@@ -5,6 +5,12 @@
             <div class="header-info">
                 <p>Dieses Webportal soll Hilfesuchende, die aufgrund des <b>Coronavirus</b> Hilfe benötigen und Helfer*innen aus Regensburg (Stadt) und Landkreis zusammenbringen.</p>
                 <p>WICHTIG: Dieses Portal dient <u>nicht für Notrufe</u>! Sollten Sie Beschwerden haben, kontaktieren Sie bitte die zuständigen Behörden.</p>
+
+                <p class="important">Um Übertragungen zu vermeiden, halten Sie unbedingt Abstand zu den Personen, denen Sie helfen / von denen Ihnen geholfen wird! Wenn Sie beim Einkaufen helfen, sprechen Sie sich
+                    so ab, dass Geld und Waren kontaktlos, z.B. durch Briefkasten oder Pakete übermittelt werden.
+                    Vermeiden Sie den Kontakt mit und zwischen <a href="https://www.bundesregierung.de/breg-de/themen/coronavirus/coronavirus-risikogruppen-1730820">Risikogruppen</a>. Beachten Sie außerdem
+                    die offiziellen <a href="https://www.stmgp.bayern.de/wp-content/uploads/2020/03/2020-03-20_media_merkblatt_coronavirus_barrierefrei.pdf">Merkblätter</a> und Hinweise der Regierung.
+                </p>
             </div>
         </header>
 
@@ -72,5 +78,13 @@
             font-size: 90%
             padding: 1em
             border-radius: 2px
+
+    .important
+        font-weight: bold
+        color: #CB4B4B
+        border: 1px solid #CB4B4B
+        border-radius: 2px
+        padding: .5em
+        line-height: 140%
 
 </style>
