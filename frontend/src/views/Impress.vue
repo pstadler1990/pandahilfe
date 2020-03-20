@@ -89,7 +89,7 @@
 
             <br />
             <div class="pure-u-1">
-                <router-link to="/">zurück zur Startseite</router-link>
+                <a href="#" @click.prevent="$router.go(-1)">zurück zur Startseite</a>
             </div>
         </header>
     </div>

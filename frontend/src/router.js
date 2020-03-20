@@ -10,7 +10,14 @@ const router = new Router({
        {
            path: '/',
            name: 'Home',
-           component: Home
+           component: Home,
+           props: { page_city: 'Regensburg'}
+       },
+       {
+           path: '/W',
+           name: 'HomeW',
+           component: Home,
+           props: { page_city: 'Würzburg'}
        },
        {
            path: '/impressum',

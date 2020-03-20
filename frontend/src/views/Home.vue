@@ -1,9 +1,9 @@
 <template>
     <div>
         <header class="pure-u-1">
-            <h1>Corona-Nachbarschaftshilfe Regensburg</h1>
+            <h1>Corona-Nachbarschaftshilfe {{page_city}}</h1>
             <div class="header-info">
-                <p>Dieses Webportal soll Hilfesuchende, die aufgrund des <b>Coronavirus</b> Hilfe benötigen und Helfer*innen aus Regensburg (Stadt) und Landkreis zusammenbringen.</p>
+                <p>Dieses Webportal soll Hilfesuchende, die aufgrund des <b>Coronavirus</b> Hilfe benötigen und Helfer*innen aus {{page_city}} und Umgebung zusammenbringen.</p>
                 <p>WICHTIG: Dieses Portal dient <u>nicht für Notrufe</u>! Sollten Sie Beschwerden haben, kontaktieren Sie bitte die zuständigen Behörden.</p>
 
                 <p class="important">Um Übertragungen zu vermeiden, halten Sie unbedingt Abstand zu den Personen, denen Sie helfen / von denen Ihnen geholfen wird! Wenn Sie beim Einkaufen helfen, sprechen Sie sich
@@ -15,10 +15,10 @@
         </header>
 
         <div class="pure-u-1">
-            <SearchHome />
+            <SearchHome :page_city="page_city"/>
         </div>
         <div class="pure-u-1 pure-u-lg-1-2">
-            <OfferHome />
+            <OfferHome :page_city="page_city"/>
         </div>
 
         <div class="pure-u-1 pure-u-lg-1-2">
@@ -39,6 +39,7 @@
             SearchHome,
             OfferHome
         },
+        props: ['page_city'],
         beforeMount() {
             scroll(0,0);
         }

@@ -33,7 +33,7 @@
                                 {{location}}
                             </option>
                         </select>
-                        <span class="pure-form-message">Wenn Sie <em>Regensburg</em> als Ort auswählen, werden alle Stadtteile automatisch
+                        <span class="pure-form-message">Wenn Sie <em>{{page_city}}</em> als Ort auswählen, werden alle Stadtteile automatisch
                         mit eingeschlossen.</span>
                     </div>
                 </fieldset>
@@ -96,7 +96,7 @@
             return {
                 offerQuery: {
                     tags: [],
-                    location: config.search.locations[0],
+                    location: '',
                     contactName: '',
                     contactPhone: '',
                     contactEmail: '',
@@ -104,7 +104,6 @@
                     contactNotes: ''
                 },
                 searchOptions: config.search.tags,
-                supportedLocations: config.search.locations,
                 formOpened: false,
                 formErrors: [],
                 offerCompleteStatus: false,
@@ -113,6 +112,7 @@
                 entryID: 0,
             }
         },
+        props: ['page_city'],
         methods: {
             extendForm: function(e) {
                 if(!this.formOpened) {
@@ -171,7 +171,6 @@
                     }
 
                 }
-
             },
             resetForm: function() {
                 this.formOpened = false;
@@ -179,7 +178,7 @@
                 this.offerCompleteSuccess = false;
                 this.offerQuery = {
                     tags: [],
-                    location: config.search.locations[0],
+                    location: this.supportedLocations[0],
                     contactName: '',
                     contactPhone: '',
                     contactEmail: '',
@@ -190,6 +189,15 @@
                 this.deleteCode = '';
                 this.entryID = 0;
             }
+        },
+        computed: {
+            supportedLocations: function () {
+                const key = Object.keys(config.search.locationsMapping).find(e => config.search.locationsMapping[e] === this.$props.page_city);
+                return config.search.locations[key];
+            }
+        },
+        beforeMount() {
+            this.offerQuery.location = this.supportedLocations[0];
         }
     }
 </script>

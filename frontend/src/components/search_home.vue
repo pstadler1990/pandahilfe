@@ -114,9 +114,8 @@
         data () {
             return {
                 searchQuery: config.search.tags[0],
-                searchLocation: config.search.locations[1],
                 searchOptions: config.search.tags,
-                supportedLocations: config.search.locations.filter(e => e !== 'Regensburg'),
+                searchLocation: '',
                 searchQueryResults: [],
                 showResults: false,
                 searchContactForm: false,
@@ -129,6 +128,7 @@
                 contactCompleteSuccess: false
             }
         },
+        props: ['page_city'],
         methods: {
             prefetchQuery: function() {
                 if(this.searchQuery) {
@@ -173,7 +173,7 @@
             resetForm: function() {
                 this.resetFormData();
                 this.searchQuery = config.search.tags[0];
-                this.searchLocation = config.search.locations[1];
+                this.searchLocation = this.supportedLocations[0];
                 this.prefetchQuery();
             },
             openContactForm: function(entry_id) {
@@ -225,7 +225,15 @@
                 this.prefetchQuery();
             }
         },
+        computed: {
+            supportedLocations: function() {
+                const key = Object.keys(config.search.locationsMapping).find(e => config.search.locationsMapping[e] === this.$props.page_city);
+                return config.search.locations[key].slice(1);
+            }
+        },
         beforeMount() {
+            this.searchLocation = this.supportedLocations[0];
+
             this.prefetchQuery();
         }
     }
