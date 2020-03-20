@@ -51,14 +51,15 @@
 
     .search-home, .offer-home, .delete-home
         padding: 1em
-        border-radius: 2px
+        border-radius: 3px
         margin: 1em
 
     .search-home
         box-shadow: 0 10px 10px rgba(0, 0, 0, .5)
 
     .search-home
-        background: $color-theme-past1
+        background: lighten($color-theme-past1, 70%)
+        border: 1px solid $color-theme-past1
         position: relative
 
     .offer-home
@@ -82,8 +83,8 @@
 
     .important
         font-weight: bold
-        color: #CB4B4B
-        border: 1px solid #CB4B4B
+        color: $color-theme-past1
+        border: 1px solid $color-theme-past1
         border-radius: 2px
         padding: .5em
         line-height: 140%

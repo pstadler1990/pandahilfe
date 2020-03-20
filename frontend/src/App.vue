@@ -16,7 +16,7 @@
                 </div>
 
                 <!-- Supporters -->
-                <div class="pure-u-1">
+                <div class="pure-u-1" v-if="false">
                     Unterstützer*innen
                 </div>
             </footer>
@@ -27,7 +27,7 @@
 <script>
     export default {
         name: 'App',
-        components: {}
+        components: {},
     }
 </script>
 
@@ -37,7 +37,7 @@
     @import "src/assets/global"
 
     body
-        background: lighten($color-theme-past2, 10%)
+        background: $color-theme-alt
 
     #app
         font-size: 100%
@@ -48,9 +48,9 @@
             margin: 0 auto
 
     a
-        color: $color-theme-alt
+        color: $color-theme-main
         font-weight: bold
-        border-bottom: 2px solid $color-theme-alt
+        border-bottom: 2px solid $color-theme-main
         text-decoration: none
 
     .required-info
@@ -67,5 +67,8 @@
         padding: 1em
         font-size: 70%
         text-align: center
+
+    .pure-button-primary
+        background: $color-theme-past1
 
 </style>

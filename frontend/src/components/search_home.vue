@@ -259,7 +259,7 @@
     .tag-highlight
         background: $color-theme-alt
         color: white
-        border: 1px solid $color-theme-light
+        border: 1px solid $color-theme-alt
 
     .result
         padding: 1em
@@ -276,7 +276,7 @@
         font-size: 90%
 
     .button-secondary
-        background: $color-theme-light
+        background: $color-theme-alt
         font-size: 90%
         color: white
 </style>
