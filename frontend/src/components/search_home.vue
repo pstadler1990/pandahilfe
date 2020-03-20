@@ -182,7 +182,8 @@
                 this.searchContactForm = true;
                 this.searchContactEntryId = entry_id;
             },
-            sendForm: function() {
+            sendForm: function(e) {
+                e.preventDefault();
                 const hasValidEmail = (email) => {
                     if(email.length === 0) {
                         return false;
