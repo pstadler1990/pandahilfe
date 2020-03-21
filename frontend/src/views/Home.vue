@@ -42,6 +42,11 @@
         props: ['page_city'],
         beforeMount() {
             scroll(0,0);
+
+            if(this.page_city === 'Würzburg') {
+                document.body.classList.add('body-w');
+            }
+
         }
     }
 </script>
