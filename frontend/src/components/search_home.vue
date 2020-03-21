@@ -251,16 +251,15 @@
     .tag
         margin-right: 1em
         font-size: 70%
-        background: $color-theme-past1
-        border: 1px solid $color-theme-past2
+        border: 1px solid $color-theme-past1
         padding: 2px
         border-radius: 2px
         display: inline-block
 
     .tag-highlight
-        background: $color-theme-alt
+        background: $color-theme-past1
+        border: 1px solid $color-theme-past2
         color: white
-        border: 1px solid $color-theme-alt
 
     .result
         padding: 1em
@@ -277,7 +276,7 @@
         font-size: 90%
 
     .button-secondary
-        background: $color-theme-alt
+        background: $color-theme-past1
         font-size: 90%
         color: white
 </style>
