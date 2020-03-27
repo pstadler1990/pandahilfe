@@ -71,20 +71,20 @@
                 <div class="pure-u-1">{{searchQueryResults.length}} Ergebnisse</div>
 
                 <div v-for="result in searchQueryResults" :key="result._id" class="result sep">
-                    <div class="pure-u1 pure-u-md-1-2">
+                    <div class="pure-u-1 pure-u-md-1-2">
                         #{{result.entry_id}} <span v-for="tag in result.tags" :key="tag" :class="{'tag': true, 'tag-highlight': tag === searchQuery}">{{tag}}</span>
                     </div>
 
-                    <div class="pure-u1 pure-u-md-1-2">
+                    <div class="pure-u-1 pure-u-md-1-2">
                         in <span v-for="location in result.location" :key="location" :class="{'tag': true, 'tag-highlight': location === searchLocation}">{{location}}</span>
                     </div>
 
-                    <div class="pure-u1 sep notes" v-if="result.notes">
+                    <div class="pure-u-1 sep notes" v-if="result.notes">
                         {{result.notes}}
                     </div>
 
                     <div class="pure-u-1 sep">
-                        <div class="pure-u1 pure-u-md-1-2" v-if="result.name">
+                        <div class="pure-u-1" v-if="result.name">
                             von <em>{{result.name}}</em>
                             <span v-if="result.email">&mdash; 📧 <a :href="emailLink(result.email)">{{result.email}}</a></span>
                             <span v-if="result.phone">&mdash; ☎ <a :href="phoneLink(result.phone)">{{result.phone}}</a></span>
