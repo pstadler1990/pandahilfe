@@ -19,7 +19,7 @@
                 <div class="pure-u-1">
                     <router-link :to="{name: 'Home'}">Regensburg</router-link> &mdash;
                     <router-link :to="{name: 'HomeW'}">Würzburg</router-link> &mdash;
-                    <router-link :to="{name: 'HomeNM'}">Neumarkt (i. d. Opf.)</router-link>
+                    <router-link :to="{name: 'HomeSR'}">Straubing-Bogen</router-link>
                 </div>
             </footer>
         </div>
