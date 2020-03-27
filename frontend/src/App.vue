@@ -16,8 +16,10 @@
                 </div>
 
                 <!-- Supporters -->
-                <div class="pure-u-1" v-if="false">
-                    Unterstützer*innen
+                <div class="pure-u-1">
+                    <router-link :to="{name: 'Home'}">Regensburg</router-link> &mdash;
+                    <router-link :to="{name: 'HomeW'}">Würzburg</router-link> &mdash;
+                    <router-link :to="{name: 'HomeNM'}">Neumarkt (Obf)</router-link>
                 </div>
             </footer>
         </div>
