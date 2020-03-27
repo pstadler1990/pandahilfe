@@ -232,7 +232,7 @@
         computed: {
             supportedLocations: function() {
                 const key = Object.keys(config.search.locationsMapping).find(e => config.search.locationsMapping[e] === this.$props.page_city);
-                return config.search.locations[key].slice(1);
+                return config.search.locations[key].slice(0);
             }
         },
         beforeMount() {
