@@ -46,7 +46,15 @@
             if(this.page_city === 'Würzburg') {
                 document.body.classList.add('body-w');
             }
-
+        },
+        watch: {
+            page_city: function() {
+                if(this.page_city === 'Würzburg') {
+                    document.body.classList.add('body-w');
+                } else {
+                    document.body.classList.remove('body-w');
+                }
+            }
         }
     }
 </script>
