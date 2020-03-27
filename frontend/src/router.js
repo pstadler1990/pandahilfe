@@ -20,6 +20,12 @@ const router = new Router({
            props: { page_city: 'Würzburg'}
        },
        {
+           path: '/NM',
+           name: 'HomeNM',
+           component: Home,
+           props: { page_city: 'Neumarkt (i.d. OPf.)'}
+       },
+       {
            path: '/impressum',
            name: 'Impress',
            component: Impress
