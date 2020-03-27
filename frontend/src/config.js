@@ -11,8 +11,13 @@ export const config = Object.freeze({
         locationsMapping: {
             'R': 'Regensburg',
             'W': 'Würzburg',
-            'NM': 'Neumarkt (i.d. OPf.)'
+            'NM': 'Neumarkt (i.d. OPf.)',
+            'SR': 'Straubing-Bogen'
         },
+        municipals: [
+            'R',
+            'W'
+        ],
         locations: {
             'R': [
                 'Regensburg',
@@ -165,6 +170,21 @@ export const config = Object.freeze({
                 'Sengenthal',
                 'Seubersdorf',
                 'Velburg'
+            ],
+            'SR': [
+                'Straubing',
+                'Bogen',
+                'Geiselhöring',
+                'Mallersdorf-Pfaffenberg',
+                'Mitterfels',
+                'Schwarzach',
+                'Aiterhofen',
+                'Hunderdorf',
+                'Mitterfels',
+                'Rain',
+                'Schwarzach',
+                'Stallwang',
+                'Straßkirchen'
             ]
         },
     }
