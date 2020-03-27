@@ -33,7 +33,7 @@
                                 {{location}}
                             </option>
                         </select>
-                        <span class="pure-form-message">Wenn Sie <em>{{page_city}}</em> als Ort auswählen, werden alle Stadtteile automatisch
+                        <span class="pure-form-message" v-if="isMunicipal">Wenn Sie <em>{{page_city}}</em> als Ort auswählen, werden alle Stadtteile automatisch
                         mit eingeschlossen.</span>
                     </div>
                 </fieldset>
@@ -191,9 +191,14 @@
             }
         },
         computed: {
+            locationKey: function() {
+                return Object.keys(config.search.locationsMapping).find(e => config.search.locationsMapping[e] === this.$props.page_city);
+            },
             supportedLocations: function () {
-                const key = Object.keys(config.search.locationsMapping).find(e => config.search.locationsMapping[e] === this.$props.page_city);
-                return config.search.locations[key];
+                return config.search.locations[this.locationKey];
+            },
+            isMunicipal: function() {
+                return config.search.municipals.includes(this.locationKey);
             }
         },
         watch: {
