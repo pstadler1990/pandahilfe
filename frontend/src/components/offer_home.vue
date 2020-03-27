@@ -196,6 +196,11 @@
                 return config.search.locations[key];
             }
         },
+        watch: {
+            page_city: function() {
+                this.resetForm();
+            }
+        },
         beforeMount() {
             this.offerQuery.location = this.supportedLocations[0];
         }

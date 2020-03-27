@@ -224,6 +224,9 @@
                 this.searchQueryResults = [];
                 this.showResults = false;
                 this.prefetchQuery();
+            },
+            page_city: function() {
+                this.resetForm();
             }
         },
         computed: {
