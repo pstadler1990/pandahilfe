@@ -12,14 +12,14 @@
                     <router-link to="/impressum">Impressum und Datenschutz</router-link>
                 </div>
                 <div class="pure-u-1 pure-u-md-1-3">
-                    Dieses Projekt ist Open Source (<a href="https://github.com/pstadler1990/pandahilfe">Github</a>)
+                    <h4>Dieses Projekt ist Open Source (<a href="https://github.com/pstadler1990/pandahilfe">Github</a>)</h4>
                 </div>
 
                 <!-- Supporters -->
                 <div class="pure-u-1">
                     <router-link :to="{name: 'Home'}">Regensburg</router-link> &mdash;
                     <router-link :to="{name: 'HomeW'}">Würzburg</router-link> &mdash;
-                    <router-link :to="{name: 'HomeNM'}">Neumarkt (Obf)</router-link>
+                    <router-link :to="{name: 'HomeNM'}">Neumarkt (i. d. Opf.)</router-link>
                 </div>
             </footer>
         </div>
@@ -72,5 +72,8 @@
 
     .pure-button-primary
         background: $color-theme-past1
+
+    h4
+        text-shadow: 1px 1px #fff
 
 </style>
